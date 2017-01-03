@@ -1,22 +1,36 @@
 apply plugin: 'com.android.application'
 
 android {
+
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
+
     defaultConfig {
         applicationId "com.sashakhyzhun.android_firebase_login_with_social"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+
+}
+
+repositories {
+    mavenCentral()
 }
 
 dependencies {
@@ -30,6 +44,10 @@ dependencies {
 
     // GCM
     apply plugin: 'com.google.gms.google-services'
-
+    // Facebook
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)' //4.9.0 mb
+    // Firebase
+    compile 'com.google.firebase:firebase-auth:9.2.0'
+    compile 'com.firebase:firebase-client-android:2.5.2'
 
 }
